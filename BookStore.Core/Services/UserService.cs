@@ -48,6 +48,7 @@ namespace BookStore.Core.Services
                 Email = model.Email,
                 PhoneNumber = model.Phone,
                 City = model.City,
+                FullName = model.FullName,
             };
 
             if (await IsExistEmailAsync(model.Email))

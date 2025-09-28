@@ -27,4 +27,8 @@
     <ProjectReference Include="..\BookStore.Test\BookStore.Test.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
