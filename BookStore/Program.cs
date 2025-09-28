@@ -1,4 +1,7 @@
+using BookStore.Core.Services;
+using BookStore.Core.Services.Interfaces;
 using BookStore.DataLayer.Context;
+using BookStore.DataLayer.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +22,12 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 
 #endregion
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+#region IoC
+
+builder.Services.AddTransient<IUserService, UserService>();
+
+#endregion
+builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
