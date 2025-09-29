@@ -81,5 +81,36 @@ namespace BookStore.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("LogOut")]
+        public async Task<IActionResult> LogOut()
+        {
+            await _userService.LogOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await _userService.IsExistEmailAsync(email);
+            if (user is false)
+                return Json(true);
+
+            return Json("ایمیل تکراری است.");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IsUserNameInUse(string userName)
+        {
+            var user = await _userService.IsExistUserNameAsync(userName);
+            if (user is false)
+                return Json(true);
+
+            return Json("نام کاربری تکراری است.");
+        }
     }
 }

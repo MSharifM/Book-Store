@@ -80,6 +80,11 @@ namespace BookStore.Core.Services
             return result;
         }
 
+        public async Task LogOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
         #endregion
     }
 }

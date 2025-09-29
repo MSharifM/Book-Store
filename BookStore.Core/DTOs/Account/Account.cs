@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Core.DTOs.Account
 {
@@ -23,6 +24,8 @@ namespace BookStore.Core.DTOs.Account
         [Display(Name = "نام کاربری")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید.")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد.")]
+        [Remote("IsUserNameInUse", "Account", HttpMethod = "POST",
+            AdditionalFields = "__RequestVerificationToken")]
         public required string UserName { get; set; }
 
         [Display(Name = "نام و نام خانوادگی")]
@@ -34,6 +37,8 @@ namespace BookStore.Core.DTOs.Account
         [Required(ErrorMessage = "لطفا {0} را وارد کنید.")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد.")]
         [EmailAddress(ErrorMessage = "ایمیل نامعتبر")]
+        [Remote("IsEmailInUse", "Account", HttpMethod = "POST",
+            AdditionalFields = "__RequestVerificationToken")]
         public required string Email { get; set; }
 
         [Required(ErrorMessage = "لطفا {0} را وارد کنید.")]
