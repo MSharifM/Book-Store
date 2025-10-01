@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "پنل کاربری";
+    Layout = "_Layout";
+}
+
+<div class="user-panel">
+    <div class="panel-header">
+        <div class="user-info-card">
+            @* <div class="user-avatar"> *@
+            @*     <img src="~/images/avatar-placeholder.jpg" alt="پروفایل کاربر" class="avatar-img"> *@
+            @*     <button class="avatar-edit-btn" title="تغییر عکس پروفایل"> *@
+            @*         <i class="fas fa-camera"></i> *@
+            @*     </button> *@
+            @* </div> *@
+            <div class="user-details">
+                <h1 class="user-name">محمدd رضایی</h1>
+                <p class="user-username">mohammad_rezaei</p>
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>5 سفارش</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-heart"></i>
+                        <span>12 مورد علاقه</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-comment"></i>
+                        <span>8 نظر</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wallet-section">
+                <div class="wallet-balance">
+                    <i class="fas fa-wallet"></i>
+                    <div class="balance-info">
+                        <span class="balance-label">موجودی کیف پول</span>
+                        <span class="balance-amount">۱۵۰,۰۰۰ <span class="currency">تومان</span></span>
+                    </div>
+                </div>
+                <form action="/UserPanel/?">
+                    <button class="charge-wallet-btn">
+                        <i class="fas fa-plus"></i>
+                        افزایش موجودی
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-container">
+        <partial name="_SideBar" />
+        <main class="panel-content">
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="card-icon primary">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>۵ سفارش</h3>
+                        <p>تعداد کل سفارشات</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>۳ تحویل شده</h3>
+                        <p>سفارشات تکمیل شده</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon warning">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>۱ در انتظار</h3>
+                        <p>سفارش در حال بررسی</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon info">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>۲۷ کتاب</h3>
+                        <p>تعداد کتاب‌های خریداری شده</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>آخرین سفارشات</h2>
+                    <a href="#" class="view-all-link">مشاهده همه</a>
+                </div>
+                <div class="orders-list">
+                    <div class="order-item">
+                        <div class="order-info">
+                            <span class="order-id">سفارش #۱۲۵۴</span>
+                            <span class="order-date">۱۴۰۲/۱۰/۱۵</span>
+                        </div>
+                        <div class="order-details">
+                            <span class="order-amount">۸۵,۰۰۰ تومان</span>
+                            <span class="order-status delivered">تحویل شده</span>
+                        </div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-info">
+                            <span class="order-id">سفارش #۱۲۵۳</span>
+                            <span class="order-date">۱۴۰۲/۱۰/۱۲</span>
+                        </div>
+                        <div class="order-details">
+                            <span class="order-amount">۱۲۰,۰۰۰ تومان</span>
+                            <span class="order-status pending">در حال بررسی</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>کتاب‌های اخیر</h2>
+                    <a href="#" class="view-all-link">مشاهده همه</a>
+                </div>
+                <div class="recent-books">
+                    <div class="book-item">
+                        <img src="~/images/book1.jpg" alt="کتاب یک" class="book-cover">
+                        <div class="book-info">
+                            <h4>انگیزه ناب</h4>
+                            <p>دن پینک</p>
+                            <span class="book-price">۴۵,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    <div class="book-item">
+                        <img src="~/images/book2.jpg" alt="کتاب دو" class="book-cover">
+                        <div class="book-info">
+                            <h4>اثر مرکب</h4>
+                            <p>دارن هاردی</p>
+                            <span class="book-price">۶۵,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

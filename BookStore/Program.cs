@@ -27,6 +27,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 builder.Services.AddTransient<IUserService, UserService>();
 
 #endregion
+
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
@@ -48,6 +49,12 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapDefaultControllerRoute();
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
 
 app.MapControllerRoute(
     name: "default",
