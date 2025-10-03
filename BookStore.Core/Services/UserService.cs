@@ -1,4 +1,5 @@
 ﻿using BookStore.Core.DTOs.Account;
+using BookStore.Core.DTOs.UserPanel;
 using BookStore.Core.Services.Interfaces;
 using BookStore.DataLayer.Context;
 using BookStore.DataLayer.Entities;
@@ -39,7 +40,7 @@ namespace BookStore.Core.Services
 
             return false;
         }
-       
+
         public async Task<IdentityResult> RegisterAsync(RegisterViewModel model)
         {
             var user = new User()
@@ -63,7 +64,7 @@ namespace BookStore.Core.Services
                 await _signInManager.SignInAsync(user, isPersistent: false);
             }
 
-            return result;     
+            return result;
             //ToDo email confirmed
         }
 
@@ -83,6 +84,27 @@ namespace BookStore.Core.Services
         public async Task LogOutAsync()
         {
             await _signInManager.SignOutAsync();
+        }
+
+        #endregion
+
+        #region UserPanel
+
+        public async Task<IdentityResult> ChangePasswordAsync(ChangePasswordViewModel model)
+        {
+            var user = await FindUserByUserNameAsync(model.UserName);
+            if(user is null)
+                return IdentityResult.Failed(new IdentityError { Description = "کاربر یافت نشد" });
+
+            var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            return result;
+        }
+
+        public async Task<User?> FindUserByUserNameAsync(string name)
+        {
+            var user = await _userManager.FindByNameAsync(name);
+
+            return user;
         }
 
         #endregion

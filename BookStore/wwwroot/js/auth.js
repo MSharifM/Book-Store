@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', function (e) {
-            e.preventDefault();
 
             if (validateRegisterForm()) {
                 // شبیه‌سازی ارسال فرم
@@ -192,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
 
             if (validateLoginForm()) {
                 // شبیه‌سازی ارسال فرم

@@ -1,26 +1,20 @@
-﻿<aside class="sidebar">
+﻿@{
+    var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+}
+
+<aside class="sidebar">
     <nav class="sidebar-nav">
-        <a href="#" class="nav-item active">
+        <a asp-action="Index" class="nav-item @(currentAction == "Index" ? "active" : "")">
             <i class="fas fa-tachometer-alt"></i>
             <span>پنل کاربری</span>
         </a>
-        <a href="#" class="nav-item">
+        <a asp-action="EditProfile" class="nav-item @(currentAction == "EditProfile" ? "active" : "")">
             <i class="fas fa-user-edit"></i>
             <span>ویرایش پروفایل</span>
         </a>
-        <a href="#" class="nav-item">
+        <a asp-action="ChangePassword" class="nav-item @(currentAction == "ChangePassword" ? "active" : "")">
             <i class="fas fa-lock"></i>
             <span>تغییر رمز عبور</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-shopping-bag"></i>
-            <span>سفارشات من</span>
-            <span class="badge">5</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span>سبد خرید</span>
-            <span class="badge">3</span>
         </a>
         <a href="#" class="nav-item">
             <i class="fas fa-heart"></i>
@@ -36,9 +30,11 @@
             <i class="fas fa-map-marker-alt"></i>
             <span>آدرس‌ها</span>
         </a>
-        <a href="#" class="nav-item logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>خروج</span>
-        </a>
+        <form asp-action="LogOut" asp-controller="Account" method="post" class="d-inline">
+            <button type="submit" class="btn btn-link nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>خروج</span>
+            </button>
+        </form>
     </nav>
 </aside>
