@@ -6,7 +6,7 @@ namespace BookStore.Core.DTOs.UserPanel
 
     public class ChangePasswordViewModel
     {
-        public required string UserName { get; set; }
+        public string? UserName { get; set; }
 
         [Display(Name = " رمزعبور فعلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید.")]

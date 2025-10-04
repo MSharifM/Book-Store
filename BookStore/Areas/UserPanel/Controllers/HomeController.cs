@@ -42,6 +42,8 @@ namespace BookStore.Areas.UserPanel.Controllers
             var result = await _userService.ChangePasswordAsync(model);
             if (result.Succeeded)
                 ViewData["isChanged"] = true;
+            else
+                ModelState.AddModelError("", "رمزعبور فعلی اشتباه است");
 
             return View(model);
         }
